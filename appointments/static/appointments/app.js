@@ -8,7 +8,8 @@ $( document ).ready(function() {
 function getAppointments() {
   $.get( "app/", function( data ) {
     for (appointment of data.appointments) {
-      $("#results").append("<p>" + "time: " + appointment.datetime + "description: " + appointment.description + "</p>")
+      var row = "<tr><td>" + appointment.datetime + "</td><td>" + appointment.description + "</td></tr>"
+      $("#results").after(row)
     }
   });
 }
