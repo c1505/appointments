@@ -33,15 +33,7 @@
 
       <form class="hidden toggleHide"  id="newAppointment" action="appointments/" method="post">
         {% csrf_token %}
-        <div class="form-group">
-          <label for="your_name">Date: </label>
-          <input class="form-control" id="datetime" type="text" name="datetime" value="{{ datetime }}">
-        </div>
-
-        <div class="form-group">
-          <label for="your_name">Description: </label>
-          <input class="form-control" id="description" type="text" name="description" value="{{ description }}">
-        </div>
+        {{ form.as_p}}
         <input type="submit" value="OK">
       </form>
 

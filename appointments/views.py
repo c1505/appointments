@@ -7,7 +7,8 @@ import json
 from django.http import JsonResponse
 from django.core import serializers
 def index(request):
-    return render(request,"appointments/index.html", {})
+    form = AppointmentForm()
+    return render(request,"appointments/index.html", {'form': form})
 
 def create(request):
     if request.method == 'POST':
