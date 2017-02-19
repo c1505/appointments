@@ -27,7 +27,8 @@
         <button type="button" class="btn btn-danger">Cancel</button>
       </div>
 
-      <form action="/your-name/" method="post">
+      <form action="appointments/" method="post">
+        {% csrf_token %}
         <div class="form-group">
           <label for="your_name">Date: </label>
           <input class="form-control" id="your_name" type="text" name="your_name" value="{{ current_name }}">
