@@ -2,6 +2,10 @@ from django.shortcuts import render
 from .forms import AppointmentForm
 from django.http import HttpResponse
 import pdb
+from appointments.models import Appointment
+import json
+from django.http import JsonResponse
+from django.core import serializers
 def index(request):
     return render(request,"appointments/index.html", {})
 
@@ -16,5 +20,7 @@ def create(request):
         else:
             return HttpResponse("Invalid Form")
 
-
-# will be returning json here i belive
+def app(request):
+    appointments = Appointment.objects.all().values('datetime', 'description')
+    response = JsonResponse(dict(appointments=list(appointments)))
+    return response
