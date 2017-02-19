@@ -27,14 +27,13 @@
       </div>
 
       <div class="hidden toggleHide row">
-        <button type="button" class="btn btn-success">Add</button>
+        <input form="newAppointment" class="btn btn-success" type="submit" value="Add">
         <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
       </div>
 
       <form class="hidden toggleHide"  id="newAppointment" action="appointments/" method="post">
         {% csrf_token %}
         {{ form.as_p}}
-        <input type="submit" value="OK">
       </form>
 
       <div class="row">
