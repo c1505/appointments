@@ -25,7 +25,7 @@ def create(request):
             messages.error(request, "Error, Please try again")
             return render(request, "appointments/index.html", {'form': form})
 
-def app(request):
+def search(request):
     params = request.GET['params']
     if params:
         appointments = Appointment.objects.filter(description=params)

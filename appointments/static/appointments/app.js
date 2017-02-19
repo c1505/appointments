@@ -16,7 +16,7 @@ $( document ).ready(function() {
 })
 
 function getAppointments(params) {
-  $.get( "app/", {params: params}, function( data ) {
+  $.get( "search/", {params: params}, function( data ) {
     var rows = ""
     for (appointment of data.appointments) {
 
