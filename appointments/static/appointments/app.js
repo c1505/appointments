@@ -1,16 +1,20 @@
 $( document ).ready(function() {
   $("#search").click( function(event) {
-    var params = $("#searchInput").val()
+    $(".added").html("");
+    var params = $("#searchInput").val();
     event.preventDefault();
     getAppointments(params);
+    $("#searchInput").val("")
     });
 })
 
 function getAppointments(params) {
   $.get( "app/", {params: params}, function( data ) {
+    var rows = ""
     for (appointment of data.appointments) {
-      var row = "<tr><td>" + appointment.datetime + "</td><td>" + appointment.description + "</td></tr>"
-      $("#results").after(row)
+      var row = "<tr class='added'><td>" + appointment.datetime + "</td><td>" + appointment.description + "</td></tr>"
+      rows = rows + row
     }
+    $("#results").after(rows);
   });
 }
