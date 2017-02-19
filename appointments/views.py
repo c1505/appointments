@@ -21,6 +21,11 @@ def create(request):
             return HttpResponse("Invalid Form")
 
 def app(request):
-    appointments = Appointment.objects.all().values('datetime', 'description')
+    params = request.GET['params']
+    if params:
+        appointments = Appointment.objects.filter(description=params)
+    else:
+        appointments = Appointment.objects.all()
+    appointments = appointments.values('datetime', 'description')
     response = JsonResponse(dict(appointments=list(appointments)))
     return response
