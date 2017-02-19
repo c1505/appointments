@@ -7,6 +7,8 @@ from appointments.models import Appointment
 import json
 from django.http import JsonResponse
 from django.core import serializers
+from django.contrib import messages
+
 def index(request):
     form = AppointmentForm()
     return render(request,"appointments/index.html", {'form': form})
@@ -14,14 +16,14 @@ def index(request):
 def create(request):
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
-        # pdb.set_trace()
-        # datetime = request.POST['datetime']
-        # description = request.POST['description']
         if form.is_valid():
             form.save()
+            messages.success(request, "Appointment Created")
             return redirect("/")
         else:
-            return HttpResponse("Invalid Form")
+            form = AppointmentForm()
+            messages.error(request, "Error, Please try again")
+            return render(request, "appointments/index.html", {'form': form})
 
 def app(request):
     params = request.GET['params']

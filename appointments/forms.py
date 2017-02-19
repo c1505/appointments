@@ -8,7 +8,6 @@ class BaseForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = "form-control"
 
-
 class AppointmentForm(BaseForm):
     datetime = forms.DateTimeField(initial=datetime.date.today)
     description = forms.CharField(widget=forms.Textarea, label="Description")
