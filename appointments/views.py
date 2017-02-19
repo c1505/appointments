@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from .forms import AppointmentForm
 from django.http import HttpResponse
 import pdb
@@ -17,7 +18,8 @@ def create(request):
         # datetime = request.POST['datetime']
         # description = request.POST['description']
         if form.is_valid():
-            return render(request,"appointments/index.html", {})
+            form.save()
+            return redirect("/")
         else:
             return HttpResponse("Invalid Form")
 
