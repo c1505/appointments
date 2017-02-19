@@ -22,16 +22,16 @@
         <h2> Appointments </h2>
       </div>
 
-      <div class="row">
-        <button type="button" class="btn btn-success">New</button>
+      <div id="new" class="row">
+        <button type="button" class="btn btn-success toggleHide">New</button>
       </div>
 
-      <div class="row">
+      <div class="hidden toggleHide row">
         <button type="button" class="btn btn-success">Add</button>
-        <button type="button" class="btn btn-danger">Cancel</button>
+        <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
       </div>
 
-      <form action="appointments/" method="post">
+      <form class="hidden toggleHide"  id="newAppointment" action="appointments/" method="post">
         {% csrf_token %}
         <div class="form-group">
           <label for="your_name">Date: </label>

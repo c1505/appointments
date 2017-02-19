@@ -1,4 +1,11 @@
 $( document ).ready(function() {
+  $("#new").click( function(event) {
+    $(".toggleHide").toggleClass("hidden");
+  })
+  $("#cancel").click( function(event) {
+    $(".toggleHide").toggleClass("hidden");
+  })
+
   $("#search").click( function(event) {
     $(".added").html("");
     var params = $("#searchInput").val();
