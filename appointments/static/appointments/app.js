@@ -13,6 +13,9 @@ $( document ).ready(function() {
     getAppointments(params);
     $("#searchInput").val("");
     });
+  $("#addAppointment").click( function(event) {
+    $("#newAppointment").submit();
+  })
 });
 
 
